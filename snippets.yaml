@@ -1,0 +1,207 @@
+# The snippet library: every sentence that can ever be sent.
+# Each snippet ID maps to its two variants [v1, v2]. Every snippet needs both.
+# Slots: {first_name} {company} {system_of_record} {ai_tool} {when}; {subject} {rep_name} {rep_title} in the thread and signature.
+
+snippets:
+  # Subjects (by angle). Lowercase, 2–4 words, no signal in the subject.
+  subject.employee_requests: ['HR questions in Slack', 'employee requests at {company}']
+  subject.it_service: ['L1 tickets in Slack', "{company}'s IT queue"]
+  subject.scale_without_headcount: ['back-office requests', "{company}'s back office"]
+  subject.governed_ai: ['agents with an audit trail', "{company}'s internal agents"]
+
+  # Trigger snippets: one per trigger sub-type, not × band.
+  # Scaling Fast
+  trigger.funding:
+    - '{company} raised again {when}, and a hiring push usually comes next.'
+    - "{company}'s raise {when} usually means more people are on the way."
+  trigger.us_office:
+    - '{company} opened a new US office {when}.'
+    - 'A new US office for {company} {when} means a new group of people starting at once.'
+  trigger.acquisition:
+    - '{company} brought a new team in through an acquisition {when}.'
+    - 'Folding an acquired team into {company} {when} is a lot of new people at once.'
+  # AI Moment
+  trigger.ai_platform_blog:
+    - "{company}'s engineers have been writing about the AI platform you're building."
+    - "The AI platform {company}'s engineers wrote about {when} caught my eye."
+  trigger.caio:
+    - '{company} brought in a Chief AI Officer {when}.'
+    - 'A new Chief AI Officer at {company} {when} usually means an AI roadmap is being drawn up.'
+  trigger.ai_adoption:
+    - '{company} rolled out a company-wide AI program {when}.'
+    - 'The company-wide AI program {company} launched {when} is a big step.'
+  trigger.ai_feature:
+    - '{company} shipped an AI feature to customers {when}.'
+    - 'Shipping AI to customers {when} puts {company} ahead of most.'
+  trigger.cdo:
+    - '{company} hired a Chief Data Officer {when}.'
+    - 'A new Chief Data Officer at {company} {when} usually reshapes the data roadmap.'
+  trigger.data_platform:
+    - '{company} is consolidating onto one data platform.'
+    - "{company}'s move to one data platform {when} is a big piece of groundwork."
+  # Operating Reset: never name the efficiency mandate, layoffs or cost cuts.
+  trigger.tool_consolidation:
+    - '{company} has been consolidating its tools this year.'
+    - 'Cutting down the number of tools {company} runs is a big project.'
+  trigger.ops_priority:
+    - 'How {company} runs looks like as much of a priority this year as how it grows.'
+    - 'Running {company} well seems to be high on the agenda this year.'
+  trigger.coo:
+    - '{company} brought in a new COO {when}.'
+    - 'A new COO at {company} {when} usually means a fresh look at how work gets done.'
+
+  # Bridges (Campaign × angle): link the "why now" to the angle's pain.
+  bridge.scaling_fast.employee_requests: ['More people means more "where do I find..." questions landing on HR.', 'New starters bring HR the same questions about pay, leave and policy.']
+  bridge.scaling_fast.it_service: ['More people means more laptops, accounts and access requests landing on IT.', 'Each new hire means a laptop, accounts and access for IT to set up.']
+  bridge.scaling_fast.scale_without_headcount: ['The back office usually has to grow with it: more approvals, expenses and invoices to chase.', 'Finance and Ops then have more approvals, expenses and invoices to chase.']
+  bridge.scaling_fast.governed_ai: ['Growth tends to put internal agents on the roadmap before anyone has time to build them.', 'Fast growth tends to put internal agents on the roadmap well before anyone can build them.']
+  bridge.ai_moment.employee_requests: ['The first place employees expect AI to show up is the HR questions they ask every week.', 'Employees expect AI to answer their HR questions first.']
+  bridge.ai_moment.it_service: ['The first test is usually whether AI can clear the IT queue, not just answer questions.', 'The early test is whether AI can close IT tickets, not just reply to them.']
+  bridge.ai_moment.scale_without_headcount: ['The next question is usually where AI takes work off Finance and Ops, not just engineering.', 'The next step is putting AI to work for Finance and Ops, not just engineering.']
+  bridge.ai_moment.governed_ai: ['The hard part is rarely the model. It is agents that act inside real systems with the right permissions.', 'Picking a model is the easy part. Getting agents to act in real systems, with the right permissions, is harder.']
+  bridge.operating_reset.employee_requests: ["That usually puts a spotlight on how much of HR's week goes on repeat questions.", "That often shows how much of HR's week goes on the same questions."]
+  bridge.operating_reset.it_service: ['That usually puts a spotlight on L1 tickets someone still closes by hand.', 'That often shows how many L1 tickets are still closed by hand.']
+  bridge.operating_reset.scale_without_headcount: ['That usually puts a spotlight on back-office work that grows with the company.', 'That often shows how much back-office work grows with the company.']
+  bridge.operating_reset.governed_ai: ['That usually means internal AI has to show results this year, not next.', 'That often means internal AI has to prove itself this year.']
+  # Evergreen has no trigger: its bridge turns the lead signal fact into the pain.
+  bridge.evergreen.employee_requests: ['Even so, questions about leave, pay and policy still end up as a message to HR.', "Even so, leave, pay and policy questions still land in HR's inbox."]
+  bridge.evergreen.it_service: ['Even so, password resets and access requests still arrive as tickets someone closes by hand.', 'Even so, resets and access requests still become tickets someone closes by hand.']
+  bridge.evergreen.scale_without_headcount: ['Even so, approvals, expenses and onboarding still get chased by hand across Finance and Ops.', 'Even so, Finance and Ops still chase approvals, expenses and onboarding by hand.']
+  bridge.evergreen.governed_ai: ['The next step is usually agents that act inside HR, IT and Finance systems, not just answer.', 'Even so, the next step is agents that act in HR, IT and Finance systems, not just chat.']
+
+  # Lead lines for a lead signal other than trigger.
+  lead.sor.hris: ['{company} keeps its people data in {system_of_record}.', '{company} runs its people processes on {system_of_record}.']
+  lead.sor.workday: ['{company} runs on Workday.', '{company} has Workday as its system of record.']
+  lead.sor.itsm: ["{company}'s IT team works out of {system_of_record}.", '{company} runs IT requests through {system_of_record}.']
+  lead.ai.tools: ["{company}'s teams already use {ai_tool}.", '{company} has {ai_tool} in the stack already.']
+  lead.ai.hiring: ['{company} is hiring heavily for AI and ML.', '{company} has a lot of AI and ML roles open.']
+  lead.headcount: ['{company} has grown fast over the last year.', '{company} has added a lot of people this year.']
+
+  # Supporting lines: at most one per email.
+  support.sor.hris: ["It plugs into {system_of_record}, so there's nothing to migrate.", 'It works on top of {system_of_record}, with nothing to migrate.']
+  support.sor.workday: ['Think Workday without the Workday UI, with nothing to migrate.', 'It is Workday without the Workday UI: nothing to migrate.']
+  support.sor.itsm: ["Anything it can't close goes into {system_of_record} as a ticket, as now.", 'It works alongside {system_of_record} rather than replacing it.']
+  support.ai.tools: ['It sits alongside {ai_tool} rather than replacing it.', 'It works next to {ai_tool}, not instead of it.']
+  support.ai.hiring: ['That keeps your AI hires on product, not internal tooling.', 'Your AI team stays on product instead of internal plumbing.']
+  support.headcount: ['With {company} growing as fast as it is, that load only goes up.', 'At the rate {company} is growing, that only gets heavier.']
+
+  # Mechanism lines (Angle × band). Exec = outcome framing, Practitioner = mechanism framing.
+  mechanism.employee_requests.exec: ['Athena answers and acts on those requests in Slack or Teams, on top of your HRIS, so HR scales without adding headcount.', 'Athena handles those requests in Slack or Teams, on top of your HRIS, so HR keeps up without new hires.']
+  mechanism.employee_requests.practitioner: ['Athena answers them in Slack or Teams and does the action too, like booking leave, as the person who asked.', 'Athena answers them in Slack or Teams and acts on them, like updating details, as the person who asked.']
+  mechanism.it_service.exec: ['Athena resolves those requests in Slack before they become tickets, so the service desk scales without extra hires.', 'Athena clears those requests in Slack before they reach the queue, so the service desk keeps up without more hires.']
+  mechanism.it_service.practitioner: ['Athena handles resets, unlocks and access requests in Slack, runs them as the person who asked, and logs every action.', 'Athena runs resets, unlocks and access requests in Slack as the person who asked, and logs every action.']
+  mechanism.scale_without_headcount.exec: ['Athena puts agents in Slack and Teams that answer, route and chase that work across your systems, so it stops growing with headcount.', "Athena's agents in Slack and Teams answer, route and chase that work across your systems, so it no longer grows with headcount."]
+  mechanism.scale_without_headcount.practitioner: ["Athena's agents answer the question, route the approval and chase the deadline across your systems, from inside Slack or Teams.", "From Slack or Teams, Athena's agents answer questions, route approvals and chase deadlines across your systems."]
+  mechanism.governed_ai.exec: ["Athena gives you production-ready agents for People, IT and Finance that act under each employee's own permissions, live in weeks.", "Athena's agents for People, IT and Finance act under each employee's own permissions and go live in weeks."]
+  mechanism.governed_ai.practitioner: ["Athena's agents act inside your HRIS, ITSM and finance tools under each employee's own permissions, and every action is logged and reversible.", "Athena's agents act in your HRIS, ITSM and finance tools under each employee's own permissions, and actions can be undone."]
+
+  # Proof lines by band: Practitioner gets the one attributed figure; Exec gets the investor line, no figure.
+  proof.practitioner: ['Athena answers up to 80% of employee requests without a person stepping in.', 'Athena answers up to 80% of employee requests with no one on your team stepping in.']
+  proof.practitioner.governed_ai: ['Every action carries an audit trail your security team can read.', 'Your security team can read the audit trail behind every action.']
+  proof.exec: ["We're backed by YC and the founders of Slack, Shopify and Figma.", 'Our backers include YC and the founders of Slack, Shopify and Figma.']
+
+  # Floor openers (by angle): no company fact at all.
+  floor.employee_requests: ['Most HR teams at companies the size of {company} spend a big share of the week on the same employee questions.', 'At companies the size of {company}, HR usually spends a big part of the week on the same employee questions.']
+  floor.it_service: ['Most IT teams at companies the size of {company} spend a big share of the week on resets and access requests.', 'At companies the size of {company}, IT usually spends a big part of the week on resets and access requests.']
+  floor.scale_without_headcount: ['At companies the size of {company}, Finance and Ops usually spend a big share of the week chasing approvals and answering the same questions.', 'At companies the size of {company}, Finance and Ops spend much of the week chasing approvals and repeat questions.']
+  floor.governed_ai: ['Most data and AI teams at companies the size of {company} get asked for internal agents long before they have time to build them.', 'At companies the size of {company}, data and AI teams get asked for internal agents well before they can build them.']
+
+  # CTAs: by band, overridden to floor when the lead signal is floor.
+  cta.exec: ['Worth 20 minutes to see if it fits {company}?', 'Open to a 20-minute look?']
+  cta.practitioner: ['Want a 2-minute video of it handling a real request?', 'Can I send a 2-minute video of it in action?']
+  cta.floor: ['Is this on your radar this year?', 'Something you are looking at this year?']
+
+  # Step 2 (day 3, at most 50 words): example line + follow-up CTA. Floor contacts get it too.
+  # Example lines (by angle): in the system of record where it is known, the .generic version otherwise.
+  # Employee Requests: each variant shows a different request from the one its step 1 mechanism line names.
+  # Governed AI never has a system of record, so its one example line is generic already.
+  # No figures in follow-ups: a follow-up may not reuse a figure from step 1.
+  example.employee_requests:
+    - 'One example: an employee asks in Teams to update their bank details, and Athena makes the change in {system_of_record} as them, with no ticket for HR.'
+    - 'For example, someone asks in Slack how much leave they have left, and Athena checks {system_of_record}, answers, and books the days off if they want them.'
+  example.employee_requests.generic:
+    - 'One example: an employee asks in Teams to update their bank details, and Athena makes the change in your HRIS as them, with no ticket for HR.'
+    - 'For example, someone asks in Slack how much leave they have left, and Athena checks your HRIS, answers, and books the days off if they want them.'
+  example.it_service:
+    - 'One example: someone is locked out on a Monday morning, asks in Slack, and Athena unlocks the account and logs it in {system_of_record}, with no one on the desk involved.'
+    - 'For example, a new starter asks in Slack for access to a shared drive, and Athena checks the policy, grants it, and records it in {system_of_record}.'
+  example.it_service.generic:
+    - 'One example: someone is locked out on a Monday morning, asks in Slack, and Athena unlocks the account and logs the action, with no one on the desk involved.'
+    - 'For example, a new starter asks in Slack for access to a shared drive, and Athena checks the policy, grants it, and logs the change.'
+  example.scale_without_headcount:
+    - 'One example: a manager asks in Slack to start onboarding a new hire, and Athena sets them up in {system_of_record} and chases the paperwork until it is done.'
+    - 'For example, someone asks in Teams to change their cost center, and Athena updates it in {system_of_record} and sends the approval to their manager.'
+  example.scale_without_headcount.generic:
+    - 'One example: a manager asks in Slack to start onboarding a new hire, and Athena sets them up in your HRIS and chases the paperwork until it is done.'
+    - 'For example, someone asks in Teams to change their cost center, and Athena updates it in your HRIS and sends the approval to their manager.'
+  example.governed_ai:
+    - 'One example: an employee asks an agent in Slack for access to a dashboard, and it grants it only if their own permissions allow, and logs the change.'
+    - "For example, a manager asks an agent in Teams to approve a purchase, and it acts only within that manager's own permissions, with every step logged."
+
+  # Follow-up CTAs (by band): lower friction than the step 1 CTA.
+  followup_cta.exec: ['Would a one-page summary for your team be useful?', 'Should I send a short overview you can read in a few minutes?']
+  followup_cta.practitioner: ['Would a one-page walkthrough of how that works be useful?', 'Should I send a short written walkthrough of how it works?']
+
+  # Step 3 (day 8, at most 30 words): closing notes (by angle). No signals, no referral ask.
+  closing.employee_requests: ["I'll leave it here. If HR's repeat questions become a priority later, just reply and I'll pick it up.", "Last note from me. If employee questions start to take up more of HR's week, reply here any time."]
+  closing.it_service: ["I'll leave it here. If the L1 queue becomes a priority later, just reply and I'll pick it up.", 'Last note from me. If the service desk queue becomes a priority, reply here any time.']
+  closing.scale_without_headcount: ["I'll leave it here. If back-office requests become a priority later, just reply and I'll pick it up.", 'Last note from me. If approvals and chasing start to take over the week, reply here any time.']
+  closing.governed_ai: ["I'll leave it here. If internal agents move up the roadmap, just reply and I'll pick it up.", 'Last note from me. If governed agents become a priority, reply here any time.']
+
+# Reps: one covers every contact at a company, picked by a hash of the company name.
+# Placeholder names: none is, or claims to be, a real member of Humaans staff.
+reps:
+  - { name: Sam Carter, title: Account Executive }
+  - { name: Priya Shah, title: Account Executive }
+  - { name: Jordan Ellis, title: Account Executive }
+  - { name: Maya Torres, title: Account Executive }
+
+# The signature under every step, filled with the company's rep. It sits outside the word caps.
+# The postal address is a placeholder until the real one is confirmed.
+signature: |-
+  {rep_name}
+  {rep_title}, Athena (by Humaans)
+  2 Placeholder Yard, London EC2A 4NE, UK
+
+  Not relevant? Reply 'no' and I won't follow up.
+
+# Steps 2 and 3 reply in the step 1 thread.
+follow_up_subject: 'Re: {subject}'
+
+# How each system of record is named in copy. A System of record missing here leaves {system_of_record} empty.
+system_of_record_names:
+  ADP Workforce Now: ADP
+  BambooHR: BambooHR
+  Rippling: Rippling
+  Sage People: Sage People
+  SAP SuccessFactors: SuccessFactors
+  UKG Pro: UKG Pro
+  Workday: Workday
+  ServiceNow: ServiceNow
+  Jira Service Management: Jira Service Management
+  Freshservice: Freshservice
+
+# Banned phrases: case-insensitive regular expressions no rendered email may match.
+banned_phrases:
+  - congrat
+  - recent news
+  - saw that you
+  - orchestration stack
+  - layoff
+  - headcount reduction
+  - restructur
+  - cut (spend|costs?)
+  - efficiency mandate
+  - cost[- ]?cut
+  - I hope this
+  - circle back
+  - synerg
+  - revolutioni[sz]e
+  # No referral ask, in the closing note or anywhere else.
+  - right person
+  - someone else
+  - point me
+  - who (else|should I)
+
+# Named Humaans customers. None is a confirmed Athena customer, so no email may name one.
+customer_names: [Lovable, Poolside, Fyxer AI, Tandem Health, Quantexa, Sellpy, Manychat, Gigs, Croud, Threecolts, Healf]

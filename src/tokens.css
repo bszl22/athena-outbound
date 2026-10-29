@@ -1,0 +1,122 @@
+/* Case study by Bryan Soo. Tokens derived from withathena.ai / humaans.io public CSS (2026-10-27). Not official Humaans material.
+   The one token set for the dashboard and the deck. Usage rules: brand/README.md.
+   Every colour names its source: Athena (withathena.ai CSS), Humaans (humaans.io CSS), or [inferred] where neither site has a value. */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap");
+
+:root {
+  color-scheme: light dark;
+
+  /* type */
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif; /* free stand-in for STK Bureau Serif */
+  --font-ui: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; /* Athena UI font, OFL */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --weight-display: 300;           /* Athena headings: font-light */
+  --tracking-display: -0.025em;    /* Athena tracking-tight */
+
+  /* surface + ink */
+  --bg: #FAFAFA;                   /* Athena --color-light */
+  --surface: #FFFFFF;              /* Athena active tab / chart card */
+  --surface-muted: #F5F5F5;        /* Athena tab track / row rule */
+  --border: #EDEDED;               /* Athena tab border */
+  --border-strong: #E5E5E5;        /* Athena th underline */
+  --text: #1C1A19;                 /* Athena --color-primary */
+  --text-strong: #262525;          /* Athena titles, th */
+  --text-body: #403D3D;            /* Athena td */
+  --text-secondary: #7B7574;       /* Athena --color-secondary */
+  --text-muted: #989392;           /* Athena --color-muted */
+
+  /* accent + status */
+  --accent: #FF5000;               /* Athena --color-brand; large text, bars and rules only */
+  --accent-strong: #E54902;        /* Athena "projected" badge text; use for small accent text */
+  --accent-tint: #FEF4F1;          /* Athena badge bg */
+  --ink-button: #191919;           /* Athena --color-dark, primary button */
+  --on-ink-button: #FFFFFF;        /* Athena primary button text-white */
+  --success: #11AB44;              /* Athena Workday action */
+  --warning: #B7791F;              /* [inferred] */
+  --danger: #D92D20;               /* [inferred] */
+
+  /* chart series: always label directly, never by colour alone */
+  --series-1: #FF5000;             /* Athena --color-brand (chart 2025 bar uses #FF5102) */
+  --series-2: #080032;             /* Athena chart 2026 navy */
+  --series-3: #0F8B8D;             /* [inferred] teal */
+  --series-4: #FFB38A;             /* [inferred] orange tint; fills only, label outside */
+  --series-5: #9E9A97;             /* Athena illustration grey; use for "other"/baseline */
+  --axis: #807B7B;                 /* Athena axis labels */
+  --gridline: #F5F5F5;             /* Athena row rule */
+
+  /* shape + depth */
+  --radius-sm: 4px;                /* badges */
+  --radius-md: 8px;                /* tabs, inputs */
+  --radius-lg: 10px;               /* buttons, tab track */
+  --radius-xl: 16px;               /* cards */
+  --shadow-card: 0 2px 8px #3f464b14, 0 8px 28px #3f464b0f;  /* Athena */
+  --shadow-raised: 0 1px 3px #00000014;                      /* Athena active tab */
+
+  /* spacing (4px base, Athena --spacing: .25rem) */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+}
+
+/* Dark: neither site has a dark theme, so most of these are [inferred]. The deck uses light values only.
+   The two dark blocks below must stay identical (test/brand.test.js checks). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #191919;                 /* Athena --color-dark / Humaans midnight #181818 */
+    --surface: #212020;            /* [inferred] */
+    --surface-muted: #2A2828;      /* [inferred] */
+    --border: #313131;             /* Humaans midnight link-hover */
+    --border-strong: #3D3D3D;      /* Humaans midnight link-active */
+    --text: #FAFAFA;               /* Athena --color-light */
+    --text-strong: #FFFFFF;        /* Humaans dark --text-color */
+    --text-body: #E5E2E0;          /* [inferred] */
+    --text-secondary: #B3ADAB;     /* [inferred] */
+    --text-muted: #8A8582;         /* [inferred] */
+    --accent: #FF6A26;             /* [inferred] lifted brand for dark bg */
+    --accent-strong: #FF8A55;      /* [inferred] */
+    --accent-tint: #3A2116;        /* [inferred] */
+    --ink-button: #FAFAFA;         /* Athena --color-light */
+    --on-ink-button: #191919;      /* Athena --color-dark */
+    --success: #50B83C;            /* Athena / Humaans midnight */
+    --warning: #E0A545;            /* [inferred] */
+    --danger: #F97066;             /* [inferred] */
+    --series-1: #FF6A26;           /* [inferred] */
+    --series-2: #B8B3FF;           /* [inferred] navy lifted to lavender */
+    --series-3: #3CC5C0;           /* [inferred] */
+    --series-4: #FFC9AD;           /* [inferred] */
+    --series-5: #6E6A67;           /* [inferred] */
+    --axis: #8A8582;               /* [inferred] matches --text-muted */
+    --gridline: #2A2828;           /* [inferred] matches --surface-muted */
+    --shadow-card: 0 0 0 1px #ffffff14;  /* [inferred] hairline instead of shadow */
+    --shadow-raised: 0 0 0 1px #ffffff1f;  /* [inferred] hairline instead of shadow */
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #191919;                   /* Athena --color-dark / Humaans midnight #181818 */
+  --surface: #212020;              /* [inferred] */
+  --surface-muted: #2A2828;        /* [inferred] */
+  --border: #313131;               /* Humaans midnight link-hover */
+  --border-strong: #3D3D3D;        /* Humaans midnight link-active */
+  --text: #FAFAFA;                 /* Athena --color-light */
+  --text-strong: #FFFFFF;          /* Humaans dark --text-color */
+  --text-body: #E5E2E0;            /* [inferred] */
+  --text-secondary: #B3ADAB;       /* [inferred] */
+  --text-muted: #8A8582;           /* [inferred] */
+  --accent: #FF6A26;               /* [inferred] lifted brand for dark bg */
+  --accent-strong: #FF8A55;        /* [inferred] */
+  --accent-tint: #3A2116;          /* [inferred] */
+  --ink-button: #FAFAFA;           /* Athena --color-light */
+  --on-ink-button: #191919;        /* Athena --color-dark */
+  --success: #50B83C;              /* Athena / Humaans midnight */
+  --warning: #E0A545;              /* [inferred] */
+  --danger: #F97066;               /* [inferred] */
+  --series-1: #FF6A26;             /* [inferred] */
+  --series-2: #B8B3FF;             /* [inferred] navy lifted to lavender */
+  --series-3: #3CC5C0;             /* [inferred] */
+  --series-4: #FFC9AD;             /* [inferred] */
+  --series-5: #6E6A67;             /* [inferred] */
+  --axis: #8A8582;                 /* [inferred] matches --text-muted */
+  --gridline: #2A2828;             /* [inferred] matches --surface-muted */
+  --shadow-card: 0 0 0 1px #ffffff14;  /* [inferred] hairline instead of shadow */
+  --shadow-raised: 0 0 0 1px #ffffff1f;  /* [inferred] hairline instead of shadow */
+}

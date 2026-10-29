@@ -1,0 +1,82 @@
+{
+  "contacts": 1000,
+  "emailed": 416,
+  "suppressed": {
+    "no email": 57,
+    "outside buyer set": 490,
+    "restructuring hold": 19,
+    "shadowed IC": 18
+  },
+  "outcome": {
+    "Emailed": 197,
+    "Deprioritised": 219
+  },
+  "campaign": {
+    "Scaling Fast": 78,
+    "AI Moment": 70,
+    "Operating Reset": 61,
+    "Evergreen": 207
+  },
+  "lead_signal_by_campaign": {
+    "Scaling Fast": {
+      "Trigger": 78,
+      "System of record": 0,
+      "AI maturity": 0,
+      "Headcount trajectory": 0,
+      "Floor": 0
+    },
+    "AI Moment": {
+      "Trigger": 70,
+      "System of record": 0,
+      "AI maturity": 0,
+      "Headcount trajectory": 0,
+      "Floor": 0
+    },
+    "Operating Reset": {
+      "Trigger": 60,
+      "System of record": 1,
+      "AI maturity": 0,
+      "Headcount trajectory": 0,
+      "Floor": 0
+    },
+    "Evergreen": {
+      "Trigger": 0,
+      "System of record": 113,
+      "AI maturity": 12,
+      "Headcount trajectory": 28,
+      "Floor": 54
+    }
+  },
+  "supporting_signal": {
+    "System of record": 114,
+    "AI maturity": 33,
+    "Headcount trajectory": 72,
+    "none": 197
+  },
+  "ladder_rung": {
+    "1": 208,
+    "2": 126,
+    "3": 28,
+    "4": 54
+  },
+  "send_wave": {
+    "1": 266,
+    "2": 134,
+    "3": 16
+  },
+  "rep": {
+    "Jordan Ellis": 120,
+    "Maya Torres": 114,
+    "Priya Shah": 92,
+    "Sam Carter": 90
+  },
+  "held": 0,
+  "held_by_check": {
+    "empty slot": 0,
+    "banned phrase": 0,
+    "up to figure": 0,
+    "word cap": 0,
+    "no silent drop": 0,
+    "no reuse": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "athena-outbound",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "render": "node src/cli.js",
+    "test": "node --test",
+    "deck": "node src/deck-cli.js"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0",
+    "pptxgenjs": "^4.0.1",
+    "yaml": "^2.9.1"
+  }
+}
